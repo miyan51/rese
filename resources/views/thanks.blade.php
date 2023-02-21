@@ -20,8 +20,12 @@
     <div class=" mt-4 bg-white shadow-2xl border border-gray-300 rounded-2xl overflow-hidden w-1/2 absolute top-80 py-16">
       <h2 class="text-center font-bold text-2xl tracking-widest">会員登録ありがとうございます</h2>
       <div class="text-center mt-10 mb-4">
-        <button class="px-8 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-900 tracking-widest ">ログインする</button>
+        <form action="/reselogin" method="get">
+          @csrf
+          <button class="px-8 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-900 tracking-widest ">ログインする</button>
+        </form>
       </div>
+
     </div>
   </main>
 

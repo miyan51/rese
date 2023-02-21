@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(ShopsTableSeeder::class);
+        
         \App\Models\Favorite::factory(8)
             ->create();
         \App\Models\Reserve::factory(6)

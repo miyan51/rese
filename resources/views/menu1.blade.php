@@ -31,9 +31,9 @@
 
   <main class="flex justify-center ">
     <div class="mt-20 font-bold text-blue-600 text-2xl w-1/2 h-1/2 text-center ">
-      <a class="block text-4xl mt-4" href="">Home</a>
-      <a class="block text-4xl mt-4" href="">Logout</a>
-      <a class="block text-4xl mt-4" href="">Mypage</a>
+      <a class="block text-4xl mt-4" href="/">Home</a>
+      <a class="block text-4xl mt-4" href="/logout">Logout</a>
+      <a class="block text-4xl mt-4" href="/mypage">Mypage</a>
     </div>
 
 

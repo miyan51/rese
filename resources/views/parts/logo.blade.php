@@ -1,4 +1,4 @@
-      <a href="{{route('index')}}" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 ml-4">
+      <a href="{{route('menu1')}}" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 ml-4">
         <svg width="50" height="50" viewBox="0 0 640 640" xml:space="preserve">
           <g transform="matrix(4.86 0 0 4.86 320.49 320.49)" id="MAAnOCfus18Cik9D8TgFP">
             <filter id="SVGID_414" y="-26%" height="152%" x="-26%" width="152%">
