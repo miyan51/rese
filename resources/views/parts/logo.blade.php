@@ -27,7 +27,7 @@
         </svg>
         <span class="ml-4 text-5xl text-blue-600 font-extrabold font-mono tracking-tight">
           <font style="vertical-align: inherit;">
-            <font style="vertical-align: inherit;">Rese</font>
+            <font style="vertical-align: inherit;"  translate="no">Rese</font>
           </font>
         </span>
       </a>

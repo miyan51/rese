@@ -17,10 +17,11 @@ use Illuminate\Support\Facades\Auth;
 
 Route::controller(ShopController::class)
     ->group(function () {
-        Route::get('/', 'index')->name('index')->middleware(['auth']);
+        Route::get('/', 'index')->name('index');
         Route::get('/reselogin', 'reselogin');
         Route::post('/reselogin', 'reselogin');
         Route::get('/reseregistration', 'reseregistration')->name('reseregistration');
+
         Route::get('/done', 'done');
         Route::get('/thanks', 'thanks');
         Route::get('/menu1', 'menu1')->name('menu1')->middleware(['auth']);
@@ -28,22 +29,49 @@ Route::controller(ShopController::class)
         Route::get('/reserve/{id}', 'reserve');
         Route::post('/reserve/{id}', 'reserve');
         Route::post('/reserveadd', 'reserveadd');
-        Route::get('/mypage', 'mypage')->middleware(['auth']);
+        Route::get('/mypage', 'mypage')->name('mypage')->middleware(['auth']);
         Route::get('/logout', 'getLogout')->name('logout');
         Route::post('/reservedel/{id}', 'reservedel');
         Route::post('/favoriteadd/{id}', 'favoriteadd')->middleware(['auth']);
         Route::post('/favoritedel/{id}', 'favoritedel')->middleware(['auth']);
+        Route::post('/reservationchange/{id}', 'reservationchange')->middleware(['auth']);
+        Route::post('/reserveedit/{id}', 'reserveedit')->middleware(['auth']);
+        Route::post('/review/{id}', 'review')->middleware(['auth']);
+        Route::post('/reviewadd', 'reviewadd')->middleware(['auth']);
+        Route::post('/reservehidden/{id}', 'reservehidden')->middleware(['auth']);
     });
 
+// 管理者用
+Route::controller(ShopController::class)
+    ->middleware(['auth', 'can:admin'])->group(
+        function () {
+            // 権限付与
+            Route::get('/userlist', 'userlist');
+            Route::post('/userlist', 'userlist');
+            Route::post('/authorityadd/{id}', 'authorityadd');
+            Route::post('/authoritydel/{id}', 'authoritydel');
+        }
+    );
 
+// 店舗責任者用
+Route::controller(ShopController::class)
+    ->middleware(['auth', 'can:manager'])->group(
+        function () {
+            // 店舗管理
+            Route::get('/shopmanagement', 'shopmanagement');
+            Route::post('/shopmanagement', 'shopmanagement');
+            Route::post('/shopedit/{id}', 'shopedit');
+            Route::post('/shopeditsave', 'shopeditsave');
+            Route::get('/shopadd', 'shopadd');
+            Route::post('/shopaddsave', 'shopaddsave');
+            Route::post('/shopdel/{id}', 'shopdel');
 
-Route::get('/aaa', function () {
-    return view('auth.login');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
+            // 予約管理
+            Route::get('/reservelist', 'reservelist');
+            Route::post('/reservelist', 'reservelist');
+            Route::post('/reservelistedit/{id}', 'reservelistedit');
+            Route::post('/reservelistdel/{id}', 'reservelistdel');
+        }
+    );
 
 require __DIR__ . '/auth.php';

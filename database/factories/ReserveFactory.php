@@ -21,7 +21,8 @@ class ReserveFactory extends Factory
             'date' => $this->faker->date($format = 'Y-m-d', $min = 'now'),
             'time' => $this->faker->time('H:i'),
             'shop_id' => $this->faker->numberBetween(1, 20),
-            'user_id' => 1,
+            'user_id' =>
+            $this->faker->numberBetween(1, 5),
         ];
     }
 }

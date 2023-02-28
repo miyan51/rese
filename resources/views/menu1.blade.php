@@ -34,6 +34,14 @@
       <a class="block text-4xl mt-4" href="/">Home</a>
       <a class="block text-4xl mt-4" href="/logout">Logout</a>
       <a class="block text-4xl mt-4" href="/mypage">Mypage</a>
+
+      @can('manager')
+      <a class="block text-4xl mt-20" href="/shopmanagement">店舗情報管理</a>
+      <a class="block text-4xl mt-4" href="/reservelist">予約情報管理</a>
+      @endcan
+      @can('admin')
+      <a class="block text-4xl mt-8" href="/userlist">管理者権限付与</a>
+      @endcan
     </div>
 
 

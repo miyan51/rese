@@ -17,14 +17,14 @@
     </div>
   </header>
 
-  <form action="/reserveadd" method="post">
+  <form action="/reserveedit/{{$reserve}}" method="post">
     @csrf
     <section class="text-gray-600 body-font overflow-hidden">
       <div class="container px-5 pt-24 mx-auto">
         <div class=" mx-auto flex flex-wrap ">
           <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 pr-10">
             <div class="flex items-center">
-              <a href="{{route('index')}}">
+              <a href="{{route('mypage')}}">
                 <svg class="bg-gray-200 rounded-xl shadow-2xl border border-gray-100 " xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
@@ -33,7 +33,7 @@
                 {{$shop->shop}}
               </h1>
             </div>
-            <img  class="w-full lg:h-auto h-64 object-cover object-center rounded mt-8" src="{{$shop->img}}">
+            <img alt="eコマース" class="w-full lg:h-auto h-64 object-cover object-center rounded mt-8" src="{{$shop->img}}">
             <div class="">
             </div>
             <p class="mt-6 text-xl">#{{$shop->area}} #{{$shop->genre}}</p>
@@ -46,7 +46,7 @@
           <div id="app" class="container mx-auto lg:w-1/2 w-full mt-6 lg:mt-0  bg-blue-600 rounded-xl font-mono overflow-hidden relative">
 
             <div class=" px-10 pb-28">
-              <h2 class="text-white text-3xl font-bold my-8">予約</h2>
+              <h2 class="text-white text-3xl font-bold my-8">予約の変更</h2>
 
 
               <input v-model="date" type="date" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" class="block mb-4 rounded-xl border-none w-1/3 h-10" name="date">
@@ -119,19 +119,9 @@
               </div>
             </div>
 
-            @auth
             <button class="absolute bottom-0 bg-blue-800 w-full flex items-center justify-center h-16">
-              <p class="text-2xl font-bold text-white ">予約する</p>
+              <p class="text-2xl font-bold text-white ">変更内容を保存する</p>
             </button>
-            @endauth
-            @guest
-            <div class="absolute bottom-0 bg-gray-500 w-full flex items-center justify-center h-16">
-              <p class="text-2xl font-bold text-white ">ログインが必要です</p>
-            </div>
-            @endguest
-
-
-
 
           </div>
         </div>

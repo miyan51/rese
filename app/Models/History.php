@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Shop extends Model
+class History extends Model
 {
     use HasFactory;
-    protected $guarded = array('id');
 
-    public function favorite()
+    public function reserve()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->belongsTo(Reserve::class);
     }
-
-
 }

@@ -24,18 +24,16 @@
         <div class="right-0 flex items-center w-1/3">
           <select name="area" class=" w-1/2 h-16 px-4 py-0 pl-2 text-gray-500 bg-transparent border-t border-b border-r border-transparent focus:ring-indigo-500 bo focus:border-indigo-500 pr-7 sm:text-sm rounded-l-md font-extrabold">
             <option value="">All area</option>
-            <option value="東京都">東京都</option>
-            <option value="大阪府">大阪府</option>
-            <option value="福岡県">福岡県</option>
+            @foreach($shops->unique('area') as $shop)
+            <option value="{{$shop -> area}}">{{$shop -> area}}</option>
+            @endforeach
           </select>
 
           <select name="genre" class="w-1/2 h-16 px-4 py-0 pl-2 text-gray-500 bg-transparent border-t border-b border-r border-transparent focus:ring-indigo-500 bo focus:border-indigo-500 pr-7 sm:text-sm font-extrabold">
             <option value="">All genre</option>
-            <option value="寿司">寿司</option>
-            <option value="焼肉">焼肉</option>
-            <option value="居酒屋">居酒屋</option>
-            <option value="イタリアン">イタリアン</option>
-            <option value="ラーメン">ラーメン</option>
+            @foreach($shops->unique('genre') as $shop)
+            <option value="{{$shop -> genre}}">{{$shop -> genre}}</option>
+            @endforeach
           </select>
         </div>
 
@@ -66,7 +64,7 @@
 
   </main>
 
- 
+
 
 
 </body>
