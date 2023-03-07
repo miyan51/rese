@@ -24,26 +24,26 @@ Route::controller(ShopController::class)
 
         Route::get('/done', 'done');
         Route::get('/thanks', 'thanks');
-        Route::get('/menu1', 'menu1')->name('menu1')->middleware(['auth']);
+        Route::get('/menu1', 'menu1')->name('menu1')->middleware(['verified']);
         Route::get('/menu2', 'menu2')->name('menu2');
         Route::get('/reserve/{id}', 'reserve');
         Route::post('/reserve/{id}', 'reserve');
         Route::post('/reserveadd', 'reserveadd');
-        Route::get('/mypage', 'mypage')->name('mypage')->middleware(['auth']);
+        Route::get('/mypage', 'mypage')->name('mypage')->middleware(['verified']);
         Route::get('/logout', 'getLogout')->name('logout');
         Route::post('/reservedel/{id}', 'reservedel');
-        Route::post('/favoriteadd/{id}', 'favoriteadd')->middleware(['auth']);
-        Route::post('/favoritedel/{id}', 'favoritedel')->middleware(['auth']);
-        Route::post('/reservationchange/{id}', 'reservationchange')->middleware(['auth']);
-        Route::post('/reserveedit/{id}', 'reserveedit')->middleware(['auth']);
-        Route::post('/review/{id}', 'review')->middleware(['auth']);
-        Route::post('/reviewadd', 'reviewadd')->middleware(['auth']);
-        Route::post('/reservehidden/{id}', 'reservehidden')->middleware(['auth']);
+        Route::post('/favoriteadd/{id}', 'favoriteadd')->middleware(['verified']);
+        Route::post('/favoritedel/{id}', 'favoritedel')->middleware(['verified']);
+        Route::post('/reservationchange/{id}', 'reservationchange')->middleware(['verified']);
+        Route::post('/reserveedit/{id}', 'reserveedit')->middleware(['verified']);
+        Route::post('/review/{id}', 'review')->middleware(['verified']);
+        Route::post('/reviewadd', 'reviewadd')->middleware(['verified']);
+        Route::post('/reservehidden/{id}', 'reservehidden')->middleware(['verified']);
     });
 
 // 管理者用
 Route::controller(ShopController::class)
-    ->middleware(['auth', 'can:admin'])->group(
+    ->middleware(['verified', 'can:admin'])->group(
         function () {
             // 権限付与
             Route::get('/userlist', 'userlist');
@@ -55,7 +55,7 @@ Route::controller(ShopController::class)
 
 // 店舗責任者用
 Route::controller(ShopController::class)
-    ->middleware(['auth', 'can:manager'])->group(
+    ->middleware(['verified', 'can:manager'])->group(
         function () {
             // 店舗管理
             Route::get('/shopmanagement', 'shopmanagement');
@@ -71,6 +71,11 @@ Route::controller(ShopController::class)
             Route::post('/reservelist', 'reservelist');
             Route::post('/reservelistedit/{id}', 'reservelistedit');
             Route::post('/reservelistdel/{id}', 'reservelistdel');
+
+
+            // メール送信
+            Route::post('/mailmessage/{id}', 'mailmessage');
+            Route::post('/mailsend', 'mailsend');
         }
     );
 

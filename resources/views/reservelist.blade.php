@@ -17,7 +17,7 @@
   </header>
 
   <main class=" flex justify-center min-h-screen bg-gray-100 ">
-    <div class=" bg-white shadow-2xl border border-gray-300 rounded-2xl overflow-hidden w-3/4 h-3/4 absolute top-40 p-10">
+    <div class=" bg-white shadow-2xl border border-gray-300 rounded-2xl overflow-hidden w-3/4 absolute top-40 p-10 ">
 
       <div class="mb-10 flex justify-between mx-10 ">
         <form action="/reservelist" method="post">
@@ -78,18 +78,23 @@
 
           @foreach($reserves as $reserve)
 
-          <form action="/reservelistedit/{{ $reserve->id }}" method="post">
-            @csrf
-            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-              <td scope="row" class="px-6 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                {{ $reserve->shop->shop }}
-              </td>
-              <td class="px-6">
-                {{ $reserve->user->name }}
-              </td>
-              <td class="">
-                <input class="border-none" type="date" name="date" value="{{ $reserve->date }}">
-              </td>
+
+          <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 h-4">
+            <td scope="row" class="px-6 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+              {{ $reserve->shop->shop }}
+            </td>
+            <td class="px-6 ">
+              <form action="/mailmessage/{{ $reserve->user->id }}" method="post">
+                @csrf
+                <button class="px-4 py-1 font-medium tracking-wide  capitalize transition-colors duration-300 transform  rounded-lg hover:bg-blue-200 focus:outline-none focus:ring focus:ring-blue-100 focus:ring-opacity-80">{{ $reserve->user->name }}</button>
+              </form>
+
+            </td>
+            <td class="">
+              <input class=" border-none" type="date" name="date" value="{{ $reserve->date }}">
+            </td>
+            <form action="/reservelistedit/{{ $reserve->id }}" method="post">
+              @csrf
               <td class="">
                 <select type="text" class="rounded-xl border-none px-8" name="time">
                   <option value="{{date('G:i', strtotime($reserve->time))}}" selected>{{date('G:i', strtotime($reserve->time))}}</option>
@@ -152,16 +157,16 @@
                   変更を保存
                 </button>
               </td>
-          </form>
-
-          <td class="">
-            <form action="/reservelistdel/{{ $reserve->id }}" method="post">
-              @csrf
-              <button class="px-4 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-500 rounded-lg hover:bg-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-80">
-                削除
-              </button>
             </form>
-          </td>
+
+            <td class="">
+              <form action="/reservelistdel/{{ $reserve->id }}" method="post">
+                @csrf
+                <button class="px-4 py-1 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-500 rounded-lg hover:bg-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-80">
+                  削除
+                </button>
+              </form>
+            </td>
           </tr>
 
           @endforeach

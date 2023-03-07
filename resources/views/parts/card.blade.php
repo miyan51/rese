@@ -1,4 +1,4 @@
-              <img class="h-40 rounded w-full object-cover object-center mb-4" src="{{$shop->img}}" alt="">
+              <img class="h-40 rounded w-full object-cover object-center mb-4" src=" {{ asset($shop->path) }}" alt="">
 
               <div class="mx-4">
                 <h2 class="text-2xl text-gray-900 font-extrabold title-font mb-1">

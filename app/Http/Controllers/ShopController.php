@@ -8,8 +8,11 @@ use App\Models\Favorite;
 use App\Models\Reserve;
 use App\Models\History;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReserveRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 class ShopController extends Controller
 {
@@ -99,7 +102,6 @@ class ShopController extends Controller
 
         return redirect('done');
     }
-
     function reservationchange($id)
     {
         $shop = Reserve::find($id)->shop;
@@ -118,7 +120,6 @@ class ShopController extends Controller
 
         return redirect('mypage');
     }
-
     function mypage()
     {
         $user_id = Auth::user()->id;
@@ -140,6 +141,8 @@ class ShopController extends Controller
         $name = Auth::user()->name;
 
         $history = History::pluck('reserve_id')->toArray();
+
+
 
         return view('mypage', compact('shops', 'reserves', 'favorites', 'name', 'history'));
     }
@@ -277,7 +280,11 @@ class ShopController extends Controller
     {
         $shop = new Shop();
         $shop->shop = $request->shop;
-        $shop->img = $request->img;
+
+        $file_name = $request->file('img')->getClientOriginalName();
+        $request->file('img')->storeAs('public/img', $file_name);
+        $shop->path = 'storage/img/' . $file_name;
+
         $shop->area = $request->area;
         $shop->genre = $request->genre;
         $shop->introduction = $request->introduction;
@@ -332,6 +339,23 @@ class ShopController extends Controller
         $reserve->delete();
 
 
+        return redirect('/reservelist');
+    }
+    function mailmessage($id)
+    {
+        $user = User::find($id);
+        return view('mailmessage', compact('user'));
+    }
+    function mailsend(Request $request)
+    {
+        $email = $request->email;
+        $subject = $request->subject;
+        Mail::send('emails.mail_reserve', [
+            'messagetext' => $request->text,
+        ], function ($message) use ($email, $subject) {
+            $message->to($email)
+                ->subject($subject);
+        });
         return redirect('/reservelist');
     }
 

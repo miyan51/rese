@@ -11,7 +11,7 @@
 <body class="mt-8 ">
 
   <header class="text-gray-600 body-font ">
-    <div class="container mx-auto flex justify-between items-center pt-4 ml-20 ">
+    <a class="container mx-auto flex justify-between items-center pt-4 ml-20 " href="/">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="60" height="60" viewBox="0 0 500 500" xml:space="preserve">
         <desc>Created with Fabric.js 4.6.0</desc>
         <defs>
@@ -26,7 +26,7 @@
           <path style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" transform=" translate(-40, -40)" d="M 63.366 80 L 40 56.634 L 16.634 80 L 0 63.366 L 23.366 40 L 0 16.634 L 16.634 0 L 40 23.366 L 63.366 0 L 80 16.634 L 56.634 40 L 80 63.366 L 63.366 80 z" stroke-linecap="round" />
         </g>
       </svg>
-    </div>
+    </a>
   </header>
 
   <main class="flex justify-center ">

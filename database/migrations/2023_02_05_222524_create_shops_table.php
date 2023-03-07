@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->string('shop', 50)->nullable(false);
-            $table->string('img', 255)->nullable(false);
+            $table->string('path')->nullable();
             $table->string('introduction', 255)->nullable(false);
             $table->string('area', 255)->nullable(false);
             $table->string('genre', 255)->nullable(false);

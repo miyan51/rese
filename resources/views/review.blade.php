@@ -33,7 +33,7 @@
                 {{$shop->shop}}
               </h1>
             </div>
-            <img alt="eコマース" class="w-full lg:h-auto h-64 object-cover object-center rounded mt-8" src="{{$shop->img}}">
+            <img alt="eコマース" class="w-full lg:h-auto h-64 object-cover object-center rounded mt-8" src="{{ asset($shop->path) }}">
             <div class="">
             </div>
             <p class="mt-6 text-xl">#{{$shop->area}} #{{$shop->genre}}</p>

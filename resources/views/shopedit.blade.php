@@ -33,7 +33,7 @@
                 {{$shop->shop}}
               </h1>
             </div>
-            <img class="w-full lg:h-auto h-64 object-cover object-center rounded mt-8" src="{{$shop->img}}">
+            <img class="w-full lg:h-auto h-64 object-cover object-center rounded mt-8" src="{{ asset($shop->path) }}">
             <p class="mt-6 text-xl">#{{$shop->area}} #{{$shop->genre}}</p>
             <p class="leading-relaxed mt-6 text-xl">
               {{$shop->introduction}}
@@ -54,7 +54,7 @@
                 <input name="shop" type="shop" id="shop" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value="{{$shop->shop}}">
 
                 <label for="img" class="block text-lg font-medium text-white dark:text-white mt-2">img</label>
-                <input name="img" type="text" id="img" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value="{{$shop->img}}">
+                <input name="img" type="text" id="img" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value="{{ asset($shop->path) }}">
 
                 <label for=" area" class="block text-lg font-medium text-white dark:text-white mt-2">エリア</label>
                 <input name="area" type="text" id="area" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value="{{$shop->area}}">

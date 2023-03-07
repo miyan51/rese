@@ -17,7 +17,7 @@
   </header>
 
   <main class="flex justify-center min-h-screen bg-gray-100 ">
-    <div class=" bg-white shadow-2xl border border-gray-300 rounded-2xl overflow-hidden w-3/4 h-2/3 absolute top-80 p-10">
+    <div class=" bg-white shadow-2xl border border-gray-300 rounded-2xl overflow-hidden w-3/4  absolute top-40 p-10">
 
       <div class="mb-10 flex justify-between mx-10">
         <form action="/userlist" method="post">
