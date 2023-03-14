@@ -9,57 +9,21 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Reserve;
+use App\Models\User;
 
 class ReservationReminderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $date;
-    public $time;
+    public $reserve;
 
-    public function __construct($date, $time)
+    public function __construct(Reserve $reserve)
     {
-        $this->date = $date;
-        $this->time = $time;
+        $this->reserve = $reserve;
     }
 
     public function build()
     {
-        return $this->subject('Reservation Reminder')
-            ->view('emails.reservation-reminder');
-    }
-
-    /**
-     * Get the message envelope.
-     *
-     * @return \Illuminate\Mail\Mailables\Envelope
-     */
-    public function envelope()
-    {
-        return new Envelope(
-            subject: 'Reservation Reminder Mail',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
-     */
-    public function content()
-    {
-        return new Content(
-            view: 'view.name',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array
-     */
-    public function attachments()
-    {
-        return [];
+        return $this->view('emails.reservationreminder')->subject('リマインダー');
     }
 }

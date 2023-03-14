@@ -17,7 +17,7 @@
     </div>
   </header>
 
-  <form action="/reserveedit/{{$reserve}}" method="post">
+  <form action="/reserveedit/{{$reserve->id}}" method="post">
     @csrf
     <section class="text-gray-600 body-font overflow-hidden">
       <div class="container px-5 pt-24 mx-auto">
@@ -40,6 +40,23 @@
             <p class="leading-relaxed mt-6 text-xl">
               {{$shop->introduction}}
             </p>
+            
+            <div class="flex mt-8">
+              <div class="">
+                店員にご提示ください
+                <div class="ml-4">
+                  {!! QrCode::generate('reservationID='.$reserve->id) !!}
+                </div>
+              </div>
+              <div class="mt-8 ml-8">
+                <form action="{{ asset('pay') }}" method="POST">
+                  {{ csrf_field() }}
+                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ env('STRIPE_KEY') }}" data-amount="500" data-name="Stripe決済デモ" data-label="決済をする" data-description="これはデモ決済です" data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto" data-currency="JPY">
+                  </script>
+                </form>
+              </div>
+            </div>
+
           </div>
 
 
@@ -128,6 +145,12 @@
       </div>
     </section>
   </form>
+
+
+
+
+
+
 
   <script>
     Vue.createApp({

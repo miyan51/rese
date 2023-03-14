@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReserveRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ShopController extends Controller
 {
@@ -105,7 +106,7 @@ class ShopController extends Controller
     function reservationchange($id)
     {
         $shop = Reserve::find($id)->shop;
-        $reserve = $id;
+        $reserve = Reserve::find($id);
 
 
         return view('reservationchange', compact('shop', 'reserve'));

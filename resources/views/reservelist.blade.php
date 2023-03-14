@@ -88,13 +88,14 @@
                 @csrf
                 <button class="px-4 py-1 font-medium tracking-wide  capitalize transition-colors duration-300 transform  rounded-lg hover:bg-blue-200 focus:outline-none focus:ring focus:ring-blue-100 focus:ring-opacity-80">{{ $reserve->user->name }}</button>
               </form>
-
             </td>
-            <td class="">
-              <input class=" border-none" type="date" name="date" value="{{ $reserve->date }}">
-            </td>
+            
             <form action="/reservelistedit/{{ $reserve->id }}" method="post">
               @csrf
+              <td class="">
+                <input class=" border-none" type="date" name="date" value="{{ $reserve->date }}">
+              </td>
+
               <td class="">
                 <select type="text" class="rounded-xl border-none px-8" name="time">
                   <option value="{{date('G:i', strtotime($reserve->time))}}" selected>{{date('G:i', strtotime($reserve->time))}}</option>

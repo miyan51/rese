@@ -74,7 +74,7 @@
                 <form action="/reservationchange/{{ $reserve->id }}" method="post">
                   @csrf
                   <button class="h-10 rounded relative inline-flex group items-center justify-center px-3.5 py-1 mb-4 cursor-pointer active:shadow-none shadow-lg bg-gradient-to-tr from-blue-400 to-blue-500  text-white mt-40">
-                    <span class="">予約内容変更</span>
+                    <span class="">予約内容</span>
                   </button>
                 </form>
               </div>
@@ -127,7 +127,6 @@
                     <span class="">評価する</span>
                   </button>
                 </form>
-
               </div>
             </div>
             @endif

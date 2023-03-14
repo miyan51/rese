@@ -78,5 +78,6 @@ Route::controller(ShopController::class)
             Route::post('/mailsend', 'mailsend');
         }
     );
+Route::post('/pay', 'PaymentController@pay');
 
 require __DIR__ . '/auth.php';
